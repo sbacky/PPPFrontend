@@ -185,7 +185,7 @@ class PPPApp {
             event.preventDefault();
             const formData = new FormData(form);
             await this[methodName](formData);
-        })
+        });
     }
 
     /**
