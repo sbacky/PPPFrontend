@@ -91,7 +91,7 @@ class PPPApi {
             }
         } catch (error) {
             console.log(`An unexpected error occured when updating a user: ${error}`);
-            return null;
+            return error;
         }
     }
 
@@ -107,13 +107,16 @@ class PPPApi {
                 method: 'GET'
             });
             const respData = await resp.json();
-            if (respData.status == 200) {
+            if (resp.ok) {
+                console.log("Response data: ", respData)
                 return respData;
             } else {
                 console.log(respData);
+                return respData;
             }
         } catch (error) {
             console.log(`An unexpected error occured when retrieving all users: ${error}`);
+            return error;
         }
     }
 
@@ -129,13 +132,16 @@ class PPPApi {
                 method: 'GET'
             });
             const respData = await resp.json();
-            if (respData.status == 200) {
+            if (resp.ok) {
+                console.log("Response data: ", respData);
                 return respData;
             } else {
                 console.log(respData);
+                return respData;
             }
         } catch (error) {
             console.log(`An unexpected error occured when retrieving a user: ${error}`);
+            return error;
         }
     }
 
@@ -153,13 +159,16 @@ class PPPApi {
                 method: 'GET'
             });
             const respData = await resp.json();
-            if (respData.status == 200) {
+            if (resp.ok) {
+                console.log("Response data: ", respData);
                 return respData;
             } else {
                 console.log(respData);
+                return respData;
             }
         } catch (error) {
             console.log(`An unexpected error occured when retrieving a user by username and password: ${error}`);
+            return error;
         }
     }
 
@@ -168,20 +177,23 @@ class PPPApi {
      * @param {number} userId 
      */
     async deleteUser(userId) {
-        const endpoint = `users/${userId}`;
+        const endpoint = `/users/${userId}`;
         const url = this.apiURL(endpoint);
         try {
             const resp = await fetch(url, {
                 method: 'DELETE'
             });
-            const respData = await resp.json();
-            if (respData.status == 200) {
+            const respData = await resp.text();
+            if (resp.ok) {
+                console.log("Response data: ", respData);
                 return respData;
             } else {
                 console.log(respData);
+                return respData;
             }
         } catch (error) {
             console.log(`An unexpected error occured when deleting a user: ${error}`);
+            return error;
         }
     }
 
@@ -214,13 +226,16 @@ class PPPApi {
                 body: JSON.stringify(album)
             });
             const respData = await resp.json();
-            if (respData.status == 200) {
+            if (resp.ok) {
+                console.log("Response data: ", respData);
                 return respData;
             } else {
                 console.log(respData);
+                return respData;
             }
         } catch (error) {
             console.log(`An unexpected error occured when adding an album: ${error}`);
+            return error;
         }
     }
 
@@ -241,13 +256,16 @@ class PPPApi {
                 body: JSON.stringify(album)
             });
             const respData = await resp.json();
-            if (respData.status == 200) {
+            if (resp.ok) {
+                console.log("Response data: ", respData);
                 return respData;
             } else {
+                return respData;
                 console.log(respData);
             }
         } catch (error) {
             console.log(`An unexpected error occured when updating an album: ${error}`);
+            return error;
         }
     }
 
@@ -262,13 +280,16 @@ class PPPApi {
                 method: 'GET'
             });
             const respData = await resp.json();
-            if (respData.status == 200) {
+            if (resp.ok) {
+                console.log("Response data: ", respData);
                 return respData;
             } else {
                 console.log(respData);
+                return error;
             }
         } catch (error) {
             console.log(`An unexpected error occured when retrieving all albums: ${error}`);
+            return error;
         }
     }
 
@@ -284,13 +305,16 @@ class PPPApi {
                 method: 'GET'
             });
             const respData = await resp.json();
-            if (respData.status == 200) {
+            if (resp.ok) {
+                console.log("Response data: ", respData);
                 return respData;
             } else {
                 console.log(respData);
+                return respData;
             }
         } catch (error) {
             console.log(`An unexpected error occured when retrieving an album: ${error}`);
+            return error;
         }
     }
 
@@ -298,7 +322,7 @@ class PPPApi {
      * Retrieving a list of albums for a user with user ID with a GET request.
      * @param {number} userId 
      */
-    async getAlbumByUserId(userId) {
+    async getAlbumsByUserId(userId) {
         const endpoint = `/albums/${userId}/albums`;
         const url = this.apiURL(endpoint);
         try {
@@ -306,13 +330,16 @@ class PPPApi {
                 method: 'GET'
             });
             const respData = await resp.json();
-            if (respData.status == 200) {
+            if (resp.ok) {
+                console.log("Response data: ", respData);
                 return respData;
             } else {
                 console.log(respData);
+                return respData;
             }
         } catch (error) {
             console.log(`An unexpected error occured when retrieving all albums for a user: ${error}`);
+            return error;
         }
     }
 
@@ -327,14 +354,17 @@ class PPPApi {
             const resp = await fetch(url, {
                 method: 'DELETE'
             });
-            const respData = await resp.json();
-            if (respData.status == 200) {
+            const respData = await resp.text();
+            if (resp.ok) {
+                console.log("Response data: ", respData);
                 return respData;
             } else {
                 console.log(respData);
+                return respData;
             }
         } catch (error) {
             console.log(`An unexpected error occured when deleting an album: ${error}`);
+            return error;
         }
     }
 

@@ -7,174 +7,199 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
-        <h2>Add User</h2>
-        <form id="addUser">
-            <div>
-                <input class="form-control" type="text" name="username" id="addUserUsername">
-                <label class="form-label" for="addUserUsername">Username</label>
-            </div>
-            <div>
-                <input class="form-control" type="password" name="password" id="addUserPassword">
-                <label class="form-label" for="addUserPassword">Password</label>
-            </div>
-            <button type="submit" class="btn" id="addUserBtn">Add User</button>
-        </form>
-        <div id="addUserResp"></div>
-        <br>
+    <div class="container my-3">
+        <!-- Dropdown function selector -->
+        <div class="mb-5">
+            <h1>Select a function</h1>
+            <form id="functionSelector">
+                <select name="function" id="functionSelect" class="form-select">
+                    <option value="addUser" selected>Add User</option>
+                    <option value="updateUser">Update User</option>
+                    <option value="getAllUsers">Get All Users</option>
+                    <option value="getUserByUsername">Get User By Username</option>
+                    <option value="deleteUser">Delete User</option>
+                    <option value="addAlbum">Add Album</option>
+                    <option value="updateAlbum">Update Album</option>
+                    <option value="getAllAlbums">Get All Albums</option>
+                    <option value="getAlbumById">Get Album By Id</option>
+                    <option value="getAlbumsByUserId">Get Albums By User Id</option>
+                    <option value="deleteAlbum">Delete Album</option>
+                </select>
+            </form>
+        </div>
+        <!-- Add user -->
+        <div class="form-container">
+            <h2>Add User</h2>
+            <form id="addUser">
+                <div class="mb-3">
+                    <input class="form-control" type="text" name="username" id="addUserUsername">
+                    <label class="form-label" for="addUserUsername">Username</label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="password" name="password" id="addUserPassword">
+                    <label class="form-label" for="addUserPassword">Password</label>
+                </div>
+                <button type="submit" class="btn btn-outline-dark" id="addUserBtn">Add User</button>
+            </form>
+            <div id="addUserResp" class="overflow-auto mt-3"></div>
+        </div>
         <!-- Update a user -->
-        <h2>Update User</h2>
-        <form id="updateUser">
-            <div>
-                <input class="form-control" type="text" name="userId" id="updateUserId">
-                <label class="form-label" for="updateUserId">User ID</label>
-            </div>
-            <div>
-                <input class="form-control" type="text" name="username" id="updateUserUsername">
-                <label class="form-label" for="updateUserUsername">Username</label>
-            </div>
-            <div>
-                <input class="form-control" type="password" name="password" id="updateUserPassword">
-                <label class="form-label" for="updateUserPassword">Password</label>
-            </div>
-            <button type="submit" class="btn" id="updateUserBtn">Update User</button>
-        </form>
-        <div id="updateUserResp"></div>
-        <br>
+        <div class="form-container d-none">
+            <h2>Update User</h2>
+            <form id="updateUser">
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="userId" id="updateUserId">
+                    <label class="form-label" for="updateUserId">User ID</label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="text" name="username" id="updateUserUsername">
+                    <label class="form-label" for="updateUserUsername">Username</label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="password" name="password" id="updateUserPassword">
+                    <label class="form-label" for="updateUserPassword">Password</label>
+                </div>
+                <button type="submit" class="btn btn-outline-dark" id="updateUserBtn">Update User</button>
+            </form>
+            <div id="updateUserResp" class="overflow-auto mt-3"></div>
+        </div>
         <!-- Retrieving all users -->
-        <h2>Get All Users</h2>
-        <form id="getAllUsers">
-            <button type="submit" class="btn" id="getAllUsersBtn">Get All</button>
-        </form>
-        <div id="getAllUsersResp"></div>
-        <br>
+        <div class="form-container d-none">
+            <h2>Get All Users</h2>
+            <form id="getAllUsers">
+                <button type="submit" class="btn btn-outline-dark" id="getAllUsersBtn">Get All Users</button>
+            </form>
+            <div id="getAllUsersResp" class="overflow-auto mt-3"></div>
+        </div>
         <!-- Get user by username -->
-        <h2>Get User By Username</h2>
-        <form id="getUserByUsername">
-            <div>
-                <input class="form-control" type="text" name="username" id="getUserUsername">
-                <label class="form-label" for="getUserUsername">Username</label>
-            </div>
-            <button type="submit" class="btn" id="getUserByUsernameBtn">Get User</button>
-        </form>
-        <div id="getUserByUsernameResp"></div>
-        <br>
+        <div class="form-container d-none">
+            <h2>Get User By Username</h2>
+            <form id="getUserByUsername">
+                <div class="mb-3">
+                    <input class="form-control" type="text" name="username" id="getUserUsername">
+                    <label class="form-label" for="getUserUsername">Username</label>
+                </div>
+                <button type="submit" class="btn btn-outline-dark" id="getUserByUsernameBtn">Get User By Username</button>
+            </form>
+            <div id="getUserByUsernameResp" class="overflow-auto mt-3"></div>
+        </div>
         <!-- Delete user -->
-        <h2>Delete User</h2>
-        <form id="deleteUser">
-            <div>
-                <input class="form-control" type="text" name="userId" id="deleteUserId">
-                <label class="form-label" for="deleteUserId">User ID</label>
-            </div>
-            <button type="submit" class="btn" id="deleteUserBtn">Delete User</button>
-        </form>
-        <div id="deleteUserResp"></div>
-        <br>
+        <div class="form-container d-none">
+            <h2>Delete User</h2>
+            <form id="deleteUser">
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="userId" id="deleteUserId">
+                    <label class="form-label" for="deleteUserId">User ID</label>
+                </div>
+                <button type="submit" class="btn btn-outline-dark" id="deleteUserBtn">Delete User</button>
+            </form>
+            <div id="deleteUserResp" class="overflow-auto mt-3"></div>
+        </div>
         <!-- Add albums -->
-        <h2>Add Album</h2>
-        <form id="addAlbum">
-            <div>
-                <input class="form-control" type="text" name="userId" id="addUserId">
-                <label class="form-label" for="addUserId">User ID</label>
-            </div>
-            <div>
-                <input class="form-control" type="text" name="title" id="addAlbumTitle">
-                <label class="form-label" for="addAlbumTitle">Title</label>
-            </div>
-            <div>
-                <input class="form-control" type="text" name="author" id="addAlbumAuthor">
-                <label class="form-label" for="addAlbumAuthor">Author</label>
-            </div>
-            <div>
-                <input class="form-control" type="number" name="songCount" id="addAlbumSongCount">
-                <label class="form-label" for="addAlbumSongCount">Song Count</label>
-            </div>
-            <div>
-                <input class="form-control" type="number" name="runTime" id="addAlbumRunTime">
-                <label class="form-label" for="addAlbumRunTime">Run Time</label>
-            </div>
-            <button type="submit" class="btn" id="addAlbumBtn">Add Album</button>
-        </form>
-        <div id="addAlbumResp"></div>
-        <br>
+        <div class="form-container d-none">
+            <h2>Add Album</h2>
+            <form id="addAlbum">
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="userId" id="addUserId">
+                    <label class="form-label" for="addUserId">User ID</label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="text" name="title" id="addAlbumTitle">
+                    <label class="form-label" for="addAlbumTitle">Title</label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="text" name="author" id="addAlbumAuthor">
+                    <label class="form-label" for="addAlbumAuthor">Author</label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="songCount" id="addAlbumSongCount">
+                    <label class="form-label" for="addAlbumSongCount">Song Count</label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="runTime" id="addAlbumRunTime">
+                    <label class="form-label" for="addAlbumRunTime">Run Time</label>
+                </div>
+                <button type="submit" class="btn btn-outline-dark" id="addAlbumBtn">Add Album</button>
+            </form>
+            <div id="addAlbumResp" class="overflow-auto mt-3"></div>
+        </div>
         <!-- Update Album -->
-        <h2>Update Album</h2>
-        <form id="updateAlbum">
-            <div>
-                <input class="form-control" type="text" name="albumId" id="updateAlbumId">
-                <label class="form-label" for="updateAlbumId">Album ID</label>
-            </div>
-            <div>
-                <input class="form-control" type="text" name="title" id="updateAlbumTitle">
-                <label class="form-label" for="updateAlbumTitle">Title</label>
-            </div>
-            <div>
-                <input class="form-control" type="text" name="author" id="updateAlbumAuthor">
-                <label class="form-label" for="updateAlbumAuthor">Author</label>
-            </div>
-            <div>
-                <input class="form-control" type="number" name="songCount" id="updateAlbumSongCount">
-                <label class="form-label" for="updateAlbumSongCount">Song Count</label>
-            </div>
-            <div>
-                <input class="form-control" type="number" name="runTime" id="updateAlbumRunTime">
-                <label class="form-label" for="updateAlbumRunTime">Run Time</label>
-            </div>
-            <button type="submit" class="btn" id="updateAlbumBtn">Update Album</button>
-        </form>
-        <div id="updateAlbumResp"></div>
-        <br>
+        <div class="form-container d-none">
+            <h2>Update Album</h2>
+            <form id="updateAlbum">
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="albumId" id="updateAlbumId">
+                    <label class="form-label" for="updateAlbumId">Album ID</label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="text" name="title" id="updateAlbumTitle">
+                    <label class="form-label" for="updateAlbumTitle">Title</label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="text" name="author" id="updateAlbumAuthor">
+                    <label class="form-label" for="updateAlbumAuthor">Author</label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="songCount" id="updateAlbumSongCount">
+                    <label class="form-label" for="updateAlbumSongCount">Song Count</label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="runTime" id="updateAlbumRunTime">
+                    <label class="form-label" for="updateAlbumRunTime">Run Time</label>
+                </div>
+                <button type="submit" class="btn btn-outline-dark" id="updateAlbumBtn">Update Album</button>
+            </form>
+            <div id="updateAlbumResp" class="overflow-auto mt-3"></div>
+        </div>
         <!-- Get all albums -->
-        <h2>Get All Albums</h2>
-        <form id="getAllAlbums">
-            <button type="submit" class="btn" id="getAllAlbumsBtn">Get All Albums</button>
-        </form>
-        <div id="getAllAlbumsResp"></div>
-        <br>
+        <div class="form-container d-none">
+            <h2>Get All Albums</h2>
+            <form id="getAllAlbums">
+                <button type="submit" class="btn btn-outline-dark" id="getAllAlbumsBtn">Get All Albums</button>
+            </form>
+            <div id="getAllAlbumsResp" class="overflow-auto mt-3"></div>
+        </div>
         <!-- Get album by ID -->
-        <h2>Get Album By ID</h2>
-        <form id="getAlbumById">
-            <div>
-                <input class="form-control" type="text" name="albumId" id="getAlbumId">
-                <label class="form-label" for="getAlbumId">Album ID</label>
-            </div>
-            <button type="submit" class="btn" id="getAlbumByIdBtn">Get Album By ID</button>
-        </form>
-        <div id="getAlbumByIdResp"></div>
-        <br>
+        <div class="form-container d-none">
+            <h2>Get Album By ID</h2>
+            <form id="getAlbumById">
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="albumId" id="getAlbumId">
+                    <label class="form-label" for="getAlbumId">Album ID</label>
+                </div>
+                <button type="submit" class="btn btn-outline-dark" id="getAlbumByIdBtn">Get Album By ID</button>
+            </form>
+            <div id="getAlbumByIdResp" class="overflow-auto mt-3"></div>
+        </div>
         <!-- Get albums by user ID -->
-        <h2>Get Albums By User ID</h2>
-        <form id="getAlbumsByUserId">
-            <div>
-                <input class="form-control" type="number" name="userId" id="getAlbumsUserId">
-                <label class="form-label" for="getAlbumsUserId">User ID</label>
-            </div>
-            <button type="submit" class="btn" id="getAlbumsByUserIdBtn">Get Album By User ID</button>
-        </form>
-        <div id="getAlbumsByUserIdResp"></div>
-        <br>
+        <div class="form-container d-none">
+            <h2>Get Albums By User ID</h2>
+            <form id="getAlbumsByUserId">
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="userId" id="getAlbumsUserId">
+                    <label class="form-label" for="getAlbumsUserId">User ID</label>
+                </div>
+                <button type="submit" class="btn btn-outline-dark" id="getAlbumsByUserIdBtn">Get Album By User ID</button>
+            </form>
+            <div id="getAlbumsByUserIdResp" class="overflow-auto mt-3"></div>
+        </div>
         <!-- Delete album by ID -->
-        <h2>Delete Album By ID</h2>
-        <form id="deleteAlbum">
-            <div>
-                <input class="form-control" type="number" name="albumId" id="deleteAlbumId">
-                <label class="form-label" for="deleteAlbumId">Album ID</label>
-            </div>
-            <button type="submit" class="btn" id="deleteAlbumBtn">Delete Album</button>
-        </form>
-        <div id="deleteAlbumResp"></div>
-        <br>
+        <div class="form-container d-none">
+            <h2>Delete Album By ID</h2>
+            <form id="deleteAlbum">
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="albumId" id="deleteAlbumId">
+                    <label class="form-label" for="deleteAlbumId">Album ID</label>
+                </div>
+                <button type="submit" class="btn btn-outline-dark" id="deleteAlbumBtn">Delete Album</button>
+            </form>
+            <div id="deleteAlbumResp" class="overflow-auto mt-3"></div>
+        </div>
     </div>
     <script type="module" src="/scripts/app.js"></script>
     <script type="module">
         import { app } from './scripts/app.js';
-
-        const addUserForm = document.getElementById('addUser');
-        addUserForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = new FormData(this);
-            app.addUser(formData);
-        });
+        await app.setup();
     </script>
 </body>
 </html>
