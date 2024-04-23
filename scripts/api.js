@@ -260,8 +260,8 @@ class PPPApi {
                 console.log("Response data: ", respData);
                 return respData;
             } else {
-                return respData;
                 console.log(respData);
+                return respData;
             }
         } catch (error) {
             console.log(`An unexpected error occured when updating an album: ${error}`);
